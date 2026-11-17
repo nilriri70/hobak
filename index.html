@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>호박 - 우리 동네 따뜻한 중고거래</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Delicious+Handrawn&family=Germania+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Limelight&family=Macondo&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&family=Oswald:wght@600;700&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;600;700&family=Press+Start+2P&family=STIX+Two+Text:wght@600;700&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Ubuntu:wght@400;500;700&family=VT323&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hobak: {
+              DEFAULT: 'var(--ds-primary, #ff6f0f)',
+              hover: 'var(--ds-primary-hover, #e5600a)',
+              light: 'var(--ds-secondary, #fff3eb)'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style type="text/tailwindcss">
+    :root {
+      --ds-primary: #ff6f0f;
+      --ds-primary-hover: #e5600a;
+      --ds-secondary: #fff3eb;
+      --ds-on-primary: #ffffff;
+      --ds-bg: #ffffff;
+      --ds-surface: #ffffff;
+      --ds-surface-muted: #f8f9fa;
+      --ds-text: #212124;
+      --ds-text-muted: #868b94;
+      --ds-border: #eaebee;
+      --ds-border-width: 1px;
+      --ds-border-style: solid;
+      --ds-radius: 12px;
+      --ds-radius-pill: 9999px;
+      --ds-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --ds-font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+      --ds-font-display: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+    }
+
+    @layer base {
+      body {
+        background-color: var(--ds-bg);
+        color: var(--ds-text);
+        font-family: var(--ds-font-body);
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      h1, h2, .ds-display {
+        font-family: var(--ds-font-display);
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--ds-primary);
+        outline-offset: 2px;
+      }
+    }
+
+    @layer utilities {
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .ds-surface {
+        background-color: var(--ds-surface);
+        border: var(--ds-border-width) var(--ds-border-style) var(--ds-border);
+        border-radius: var(--ds-radius);
+        box-shadow: var(--ds-shadow);
+      }
+      .ds-btn-primary {
+        background-color: var(--ds-primary);
+        color: var(--ds-on-primary);
+        border-radius: var(--ds-radius-pill);
+      }
+      .ds-btn-primary:hover {
+        background-color: var(--ds-primary-hover);
+      }
+    }
+
+    /* 디자인 스킬별 시그니처 디테일 (awesome-design-skills N~S) */
+    [data-design-skill='neon'] .ds-btn-primary {
+      box-shadow: 0 0 14px rgba(187, 243, 81, 0.55);
+    }
+    [data-design-skill='neobrutalism'] .ds-btn-primary,
+    [data-design-skill='pulsed'] .ds-btn-primary {
+      border: 3px solid var(--ds-text);
+      box-shadow: 4px 4px 0px var(--ds-text);
+    }
+    [data-design-skill='pulsed'] .ds-btn-primary:hover {
+      transform: scale(1.03);
+    }
+    [data-design-skill='neumorphism'] .ds-btn-primary {
+      box-shadow: 4px 4px 10px #c5c3c2, -4px -4px 10px #ffffff;
+    }
+    [data-design-skill='pacman'] .ds-btn-primary {
+      border: 3px dotted #FACC15;
+    }
+    [data-design-skill='perspective'] .ds-surface {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    [data-design-skill='perspective'] .ds-surface:hover {
+      transform: translateY(-2px);
+    }
+    [data-design-skill='sega'] .ds-btn-primary,
+    [data-design-skill='retro'] .ds-btn-primary,
+    [data-design-skill='riso'] .ds-btn-primary,
+    [data-design-skill='sketch'] .ds-btn-primary {
+      border: 2px solid var(--ds-text);
+      box-shadow: 3px 3px 0px var(--ds-text);
+    }
+    [data-design-skill='sega'] .ds-btn-primary:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--ds-text);
+    }
+    [data-design-skill='skeumorphism'] .ds-btn-primary {
+      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(0, 0, 0, 0.14) 100%);
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+    [data-design-skill='roku'] .ds-surface {
+      backdrop-filter: blur(12px);
+    }
+    [data-design-skill='spacious'] #app-root > div,
+    [data-design-skill='spacious'] #app-root > section {
+      padding-top: 2.25rem;
+      padding-bottom: 2.25rem;
+    }
+    [data-design-skill='spacious'] button,
+    [data-design-skill='spacious'] select,
+    [data-design-skill='spacious'] input {
+      min-height: 44px;
+    }
+  </style>
+</head>
+<body class="antialiased leading-normal">
+  <header class="sticky top-0 z-50 bg-[var(--ds-surface)]/95 backdrop-blur-md border-b border-[var(--ds-border)]">
+    <div class="max-w-[1080px] mx-auto h-16 px-3.5 md:px-5 flex items-center justify-between gap-2.5 md:gap-5">
+      <a href="#list" id="nav-home" aria-label="호박 홈으로 이동" class="inline-flex items-center gap-2 text-[1.35rem] font-extrabold text-[var(--ds-primary)] tracking-tight shrink-0 ds-display">
+        <svg class="w-7 h-7" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 5C16 3.5 17 2.5 18.5 2.5" stroke="#2f9e44" stroke-width="2.6" stroke-linecap="round" />
+          <ellipse cx="16" cy="17.5" rx="12" ry="10.5" fill="currentColor" />
+          <ellipse cx="16" cy="17.5" rx="6.5" ry="10.5" fill="#ffffff" opacity="0.22" />
+        </svg>
+        <span>호박</span>
+      </a>
+
+      <search class="flex-1 max-w-[460px]">
+        <form id="global-search-form" class="w-full flex items-center relative">
+          <label for="global-search-input" class="sr-only">물품이나 동네 검색</label>
+          <input
+            type="search"
+            id="global-search-input"
+            class="w-full h-10 pl-4 pr-10 rounded-[var(--ds-radius)] border border-[var(--ds-border)] bg-[var(--ds-surface-muted)] text-[0.9375rem] text-[var(--ds-text)] placeholder:text-[var(--ds-text-muted)] focus:outline-none focus:bg-[var(--ds-surface)] focus:border-[var(--ds-primary)] transition-colors"
+            placeholder="물품이나 동네를 검색해보세요"
+            autocorrect="off"
+            autocapitalize="none"
+            spellcheck="false"
+            enterkeyhint="search"
+          />
+          <button type="submit" aria-label="검색" class="absolute right-2.5 flex items-center justify-center w-7 h-7 text-[var(--ds-text-muted)] hover:text-[var(--ds-text)]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </search>
+
+      <div id="auth-actions" class="flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          id="auth-login-btn"
+          class="ds-btn-primary inline-flex items-center justify-center px-4 py-2 text-sm font-bold transition-all"
+        >
+          로그인
+        </button>
+        <span
+          id="auth-user-badge"
+          class="hidden items-center px-3 py-1.5 rounded-[var(--ds-radius-pill)] bg-[var(--ds-secondary)] text-[var(--ds-primary)] text-sm font-bold"
+        ></span>
+        <button
+          type="button"
+          id="auth-logout-btn"
+          class="hidden items-center justify-center px-3.5 py-2 rounded-[var(--ds-radius)] border border-[var(--ds-border)] bg-[var(--ds-surface)] text-[var(--ds-text)] text-sm font-semibold hover:bg-[var(--ds-surface-muted)] transition-colors"
+        >
+          로그아웃
+        </button>
+      </div>
+    </div>
+
+    <!-- R~S Design Skills Switcher Bar -->
+    <div class="border-t border-[var(--ds-border)] bg-[var(--ds-surface-muted)]/70">
+      <div class="max-w-[1080px] mx-auto px-3.5 md:px-5 py-2 flex items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-[var(--ds-primary)] shrink-0">Design Skill (N~S)</span>
+          <label for="design-skill-select" class="sr-only">디자인 스킬 선택</label>
+          <select
+            id="design-skill-select"
+            class="h-8 px-2.5 rounded-[var(--ds-radius)] border border-[var(--ds-border)] bg-[var(--ds-surface)] text-xs font-bold text-[var(--ds-text)] focus:outline-none focus:border-[var(--ds-primary)]"
+          ></select>
+          <span id="design-skill-desc" class="hidden md:inline text-xs text-[var(--ds-text-muted)] truncate"></span>
+        </div>
+        <div id="design-skill-quick-chips" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar max-w-full"></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-root" tabindex="-1" class="min-h-[60vh] focus:outline-none"></main>
+
+  <footer class="mt-16 border-t border-[var(--ds-border)] bg-[var(--ds-surface)] px-5 pt-10 pb-14 text-[var(--ds-text-muted)] text-[0.8125rem]">
+    <div class="max-w-[1080px] mx-auto">
+      <div class="flex justify-between items-start flex-wrap gap-8 pb-8 border-b border-[var(--ds-border)]">
+        <div>
+          <a href="#list" class="inline-flex items-center gap-2 text-[1.35rem] font-extrabold text-[var(--ds-primary)] tracking-tight mb-3 ds-display">
+            <svg class="w-7 h-7" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 5C16 3.5 17 2.5 18.5 2.5" stroke="#2f9e44" stroke-width="2.6" stroke-linecap="round" />
+              <ellipse cx="16" cy="17.5" rx="12" ry="10.5" fill="currentColor" />
+              <ellipse cx="16" cy="17.5" rx="6.5" ry="10.5" fill="#ffffff" opacity="0.22" />
+            </svg>
+            <span>호박</span>
+          </a>
+          <p>가까운 이웃과 함께하는 따뜻한 동네 직거래 마켓</p>
+        </div>
+
+        <nav class="grid grid-cols-2 md:grid-cols-4 gap-6" aria-label="푸터 메뉴">
+          <div>
+            <h4 class="text-[var(--ds-text)] text-sm font-bold mb-3">서비스</h4>
+            <ul class="flex flex-col gap-2">
+              <li><a href="#list" class="hover:underline">중고거래</a></li>
+              <li><a href="#write" class="hover:underline">내 물건 팔기</a></li>
+              <li><a href="#list" class="hover:underline">동네업체</a></li>
+              <li><a href="#list" class="hover:underline">알바</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[var(--ds-text)] text-sm font-bold mb-3">회사</h4>
+            <ul class="flex flex-col gap-2">
+              <li><a href="#list" class="hover:underline">회사 소개</a></li>
+              <li><a href="#list" class="hover:underline">호박팀 문화</a></li>
+              <li><a href="#list" class="hover:underline">채용</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[var(--ds-text)] text-sm font-bold mb-3">문의</h4>
+            <ul class="flex flex-col gap-2">
+              <li><a href="#list" class="hover:underline">IR</a></li>
+              <li><a href="#list" class="hover:underline">PR</a></li>
+              <li><a href="#list" class="hover:underline">고객센터</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[var(--ds-text)] text-sm font-bold mb-3">탐색</h4>
+            <ul class="flex flex-col gap-2">
+              <li><a href="#list" class="hover:underline">이용약관</a></li>
+              <li><a href="#list" class="hover:underline">개인정보처리방침</a></li>
+              <li><a href="#list" class="hover:underline">위치기반서비스</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="pt-6 leading-relaxed">
+        <p><strong class="text-[var(--ds-text)]">(주)호박마켓</strong> | 대표: 호박팀장 | 서울특별시 용산구 한남대로 00길 00</p>
+        <p>사업자 등록번호: 000-00-00000 | 통신판매업 신고번호: 2026-서울용산-0000</p>
+        <p>© Hobak Market Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog
+    id="auth-modal"
+    aria-labelledby="auth-modal-title"
+    class="p-0 m-auto w-[calc(100%-2rem)] max-w-[420px] rounded-2xl bg-[var(--ds-surface)] text-[var(--ds-text)] border border-[var(--ds-border)] shadow-xl backdrop:bg-black/50 backdrop:backdrop-blur-xs"
+  >
+    <div class="p-6">
+      <div class="flex items-center justify-between mb-5">
+        <h2 id="auth-modal-title" class="text-xl font-extrabold text-[var(--ds-text)]">호박 로그인</h2>
+        <button
+          type="button"
+          id="auth-modal-close"
+          aria-label="로그인 창 닫기"
+          class="w-8 h-8 rounded-full inline-flex items-center justify-center text-[var(--ds-text-muted)] hover:bg-[var(--ds-surface-muted)] hover:text-[var(--ds-text)]"
+        >✕</button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-[var(--ds-surface-muted)] mb-5" role="tablist" aria-label="인증 방식 선택">
+        <button
+          type="button"
+          id="auth-tab-login"
+          role="tab"
+          aria-selected="true"
+          class="py-2 rounded-lg text-sm font-bold bg-[var(--ds-surface)] text-[var(--ds-text)] shadow-xs transition-all"
+        >로그인</button>
+        <button
+          type="button"
+          id="auth-tab-signup"
+          role="tab"
+          aria-selected="false"
+          class="py-2 rounded-lg text-sm font-semibold text-[var(--ds-text-muted)] transition-all"
+        >회원가입</button>
+      </div>
+
+      <form id="auth-form" class="space-y-4" novalidate>
+        <div id="auth-nickname-group" class="hidden">
+          <label for="auth-nickname" class="block text-sm font-bold text-[var(--ds-text)] mb-1">
+            닉네임 <span class="text-[var(--ds-primary)]" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="text"
+            id="auth-nickname"
+            name="nickname"
+            maxlength="20"
+            placeholder="사용할 닉네임 (예: 윌슨)"
+            autocomplete="nickname"
+            class="w-full h-11 px-3.5 rounded-lg border border-[var(--ds-border)] bg-[var(--ds-surface)] text-sm text-[var(--ds-text)] focus:outline-none focus:border-[var(--ds-primary)]"
+          />
+        </div>
+
+        <div>
+          <label for="auth-email" class="block text-sm font-bold text-[var(--ds-text)] mb-1">
+            이메일 <span class="text-[var(--ds-primary)]" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="email"
+            id="auth-email"
+            name="email"
+            required
+            placeholder="example@email.com"
+            autocomplete="email"
+            class="w-full h-11 px-3.5 rounded-lg border border-[var(--ds-border)] bg-[var(--ds-surface)] text-sm text-[var(--ds-text)] focus:outline-none focus:border-[var(--ds-primary)]"
+          />
+        </div>
+
+        <div>
+          <label for="auth-password" class="block text-sm font-bold text-[var(--ds-text)] mb-1">
+            비밀번호 <span class="text-[var(--ds-primary)]" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="password"
+            id="auth-password"
+            name="password"
+            required
+            minlength="6"
+            placeholder="6자 이상 입력해주세요"
+            autocomplete="current-password"
+            class="w-full h-11 px-3.5 rounded-lg border border-[var(--ds-border)] bg-[var(--ds-surface)] text-sm text-[var(--ds-text)] focus:outline-none focus:border-[var(--ds-primary)]"
+          />
+        </div>
+
+        <p id="auth-error-msg" class="text-xs font-semibold text-red-600 min-h-[1rem]" role="alert"></p>
+
+        <button
+          type="submit"
+          id="auth-submit-btn"
+          class="ds-btn-primary w-full h-11 text-sm font-bold transition-all"
+        >로그인</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script defer src="./js/design-systems.js"></script>
+  <script defer src="./js/data.js"></script>
+  <script defer src="./js/list.js"></script>
+  <script defer src="./js/detail.js"></script>
+  <script defer src="./js/write.js"></script>
+  <script defer src="./js/app.js"></script>
+</body>
+</html>
